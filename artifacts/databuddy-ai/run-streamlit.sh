@@ -19,4 +19,4 @@ if [[ -n "$BASE_PATH" ]]; then
   streamlit_args+=(--server.baseUrlPath "$BASE_PATH")
 fi
 
-exec python -m streamlit run app.py "${streamlit_args[@]}"
+exec python -m streamlit run streamlit_app.py "${streamlit_args[@]}"

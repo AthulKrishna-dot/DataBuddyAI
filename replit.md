@@ -5,7 +5,7 @@ DataBuddy AI is a local-first data analytics assistant that helps students and b
 ## Run & Operate
 
 - Preview workflow: `artifacts/databuddy-ai: web` (runs the Streamlit app through the registered app preview).
-- Local run: `cd databuddy-ai && streamlit run app.py`.
+- Local run: `cd databuddy-ai && streamlit run streamlit_app.py`.
 - Tests: `cd databuddy-ai && python -m pytest -q`.
 - The app does not use the shared API server or database.
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
@@ -23,7 +23,7 @@ DataBuddy AI is a local-first data analytics assistant that helps students and b
 
 ## Where things live
 
-- `databuddy-ai/app.py` — Streamlit application and session state
+- `databuddy-ai/streamlit_app.py` — stable Streamlit entry point; `app.py` contains the application and session state
 - `databuddy-ai/modules/` — CSV loading, analysis, cleaning, charts, chat, and optional Bedrock adapter
 - `databuddy-ai/tests/` — automated Python tests
 - `databuddy-ai/sample_data/` — sample CSV with missing values and a duplicate record

@@ -44,10 +44,10 @@ cd databuddy-ai
 python -m venv .venv
 source .venv/bin/activate       # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-streamlit run app.py
+streamlit run streamlit_app.py
 ```
 
-Streamlit prints a local URL when the server starts. Choose **Use sample dataset** to explore without uploading a file.
+`streamlit_app.py` is the stable entry point; `app.py` contains the application implementation. Streamlit prints a local URL when the server starts. Choose **Use sample dataset** to explore without uploading a file.
 
 ## Run tests
 
