@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "DataBuddy AI"
+description = "A local-first data analytics assistant for students and beginners. Upload CSV datasets to inspect data quality, explore interactive charts, clean a working copy, ask grounded questions, and download reports."
+version = "1.0.0"
+id = "artifacts/databuddy-ai"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24009
+
+[services.development]
+run = "pnpm --filter @workspace/databuddy-ai run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/databuddy-ai", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/databuddy-ai/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24009"
+BASE_PATH = "/"

@@ -1,0 +1,272 @@
+# Project Prompt: DataBuddy AI — Your Personal Data Analytics Assistant
+
+Act as an expert Python developer, data scientist, UI/UX designer, and AI application engineer. Build a complete, beginner-friendly web application called **DataBuddy AI**, a smart data analytics assistant that helps students and beginners analyze datasets using simple English.
+
+## 1. Project Objective
+
+Develop a modern, interactive web application where users can upload CSV datasets, automatically analyze data, visualize patterns, identify data quality issues, and ask questions about their data.
+
+The application should feel like a friendly personal data analyst, not just a static dashboard.
+
+## 2. Technology Stack
+
+Use the following technologies:
+
+* Python as the main programming language.
+* Streamlit for the web interface.
+* Pandas for data processing and analysis.
+* NumPy for numerical calculations.
+* Plotly for interactive charts.
+* Amazon Bedrock for optional generative AI integration.
+* AWS Lambda for optional backend processing.
+* Amazon S3 for optional cloud dataset storage.
+
+**Important:** First build a fully working local version without requiring an AWS account or API keys. Keep AWS integration modular so it can be added later.
+
+## 3. Application Design
+
+Create a professional, attractive interface with:
+
+* A clean white background.
+* Blue accent colors and subtle gradients.
+* Modern cards with rounded corners.
+* Responsive layouts for desktop and mobile.
+* Sidebar navigation.
+* Clear typography and readable charts.
+* A friendly robot or data assistant icon.
+* Loading indicators and helpful error messages.
+
+The application should look like a modern SaaS product.
+
+## 4. Main Features
+
+### A. Welcome Page
+
+Display:
+
+* Application name: DataBuddy AI.
+* Tagline: "Your friendly companion for smarter data analysis."
+* A short introduction.
+* A CSV upload button.
+* A sample dataset option.
+* Suggested questions to help beginners get started.
+
+### B. CSV File Upload
+
+Allow users to upload CSV files.
+
+Requirements:
+
+* Validate file format and file contents.
+* Show a helpful message if the file cannot be read.
+* Preview the first 100 rows.
+* Display the total number of rows and columns.
+* Handle missing values and duplicate records.
+* Include a reasonable file-size limit.
+* Do not store uploaded data permanently by default.
+
+### C. Data Overview Dashboard
+
+Display KPI cards for:
+
+* Total rows.
+* Total columns.
+* Missing cells.
+* Duplicate rows.
+
+Generate a data quality report containing:
+
+* Column names.
+* Data types.
+* Missing-value counts.
+* Missing-value percentages.
+* Unique-value counts.
+* Basic statistical summaries.
+
+### D. Interactive Data Visualization
+
+Allow users to choose a column and chart type.
+
+Include:
+
+* Histogram.
+* Bar chart.
+* Line chart when appropriate.
+* Scatter plot.
+* Box plot.
+* Correlation heatmap.
+
+Use Plotly for interactive visualizations. Validate column types and handle unsuitable chart selections gracefully.
+
+### E. Data Cleaning Assistant
+
+Create a dedicated data cleaning section.
+
+Allow users to:
+
+* Identify missing values.
+* Remove duplicate rows.
+* Fill missing numeric values using a selected strategy.
+* Fill missing categorical values using a selected strategy.
+* Preview changes before applying them.
+* Compare original and cleaned data.
+* Download the cleaned dataset as a CSV file.
+
+Never overwrite the original dataset automatically.
+
+### F. DataBuddy Chat Assistant
+
+Create a chat interface where users can ask questions about their uploaded dataset.
+
+Example questions:
+
+* "Explain this dataset in simple English."
+* "How many missing values are there?"
+* "Which column has the highest average?"
+* "Show me the correlation between numerical columns."
+* "Are there any duplicate records?"
+* "What insights can I find in this dataset?"
+* "Which chart should I use?"
+* "What should I do next?"
+
+For the local MVP, implement reliable Python-based question handling and clearly communicate which questions are supported.
+
+Design a separate AI provider module for future Amazon Bedrock integration. When configured, use the model to explain computed results and answer questions grounded in actual dataset statistics.
+
+Do not pretend that a generative AI model is connected when it is not. Never allow the AI to invent dataset values. Handle errors and unavailable model access gracefully.
+
+### G. Special Feature: Explain It Simply
+
+This is the most important user experience feature.
+
+After analyzing the dataset, provide an **"Explain My Data Simply"** button.
+
+When clicked, display:
+
+* A short summary of the dataset.
+* Important data quality issues.
+* Key numerical observations.
+* Suggested visualizations.
+* Three recommended next steps.
+
+Use beginner-friendly English. Explain technical terms when they appear.
+
+For example:
+
+"Your dataset contains 500 rows and 8 columns. There are 12 missing cells and 3 duplicate records. Start by checking the missing values before calculating averages."
+
+Generate the explanation from actual computed results, not fabricated examples.
+
+### H. Download and Export
+
+Provide buttons to download:
+
+* Cleaned CSV data.
+* A statistical summary report.
+* A data quality report.
+
+Make sure downloads work locally without AWS credentials.
+
+## 5. AWS Architecture — Future Extension
+
+Prepare the application for optional AWS integration:
+
+* Amazon Bedrock: natural-language explanations and question answering.
+* AWS Lambda: backend processing and AI request handling.
+* Amazon S3: optional storage for datasets and reports.
+
+Keep AWS credentials outside the source code. Use environment variables or an appropriate AWS credentials provider.
+
+Create a configuration file or environment variable structure for AWS settings. If AWS is not configured, the local application must continue to work normally.
+
+Do not deploy resources or incur cloud charges without explicit confirmation.
+
+## 6. Suggested Project Structure
+
+Create the following structure:
+
+databuddy-ai/
+
+* app.py
+* requirements.txt
+* README.md
+* .gitignore
+* modules/
+
+  * data_loader.py
+  * data_analysis.py
+  * data_cleaning.py
+  * visualization.py
+  * chat_assistant.py
+  * ai_provider.py
+* tests/
+
+  * test_data_analysis.py
+  * test_data_cleaning.py
+* sample_data/
+
+  * student_performance.csv
+
+Organize the code into reusable modules. If the project becomes too complex, implement and test the essential features first before adding optional features.
+
+## 7. Security and Reliability
+
+* Validate uploaded files and handle malformed CSV files.
+* Avoid exposing API keys or AWS credentials.
+* Do not execute user-provided Python code.
+* Do not upload datasets to AWS without explicit user consent.
+* Do not permanently retain uploaded files by default.
+* Handle empty datasets, missing columns, non-numeric columns, and invalid chart selections.
+* Add clear error messages and useful logging.
+* Ensure the application works without any AI API key.
+
+## 8. Testing Requirements
+
+Create a sample dataset and automated tests.
+
+Test:
+
+* Valid CSV uploads.
+* Empty or malformed CSV files.
+* Missing values.
+* Duplicate records.
+* Numerical summaries.
+* Correlation calculations.
+* Data cleaning.
+* CSV downloads.
+* Unsupported chat questions.
+
+Include a test dataset containing at least one missing value and one duplicate row. Document the expected test results.
+
+## 9. README Documentation
+
+Write a README containing:
+
+* Project overview.
+* Features.
+* Technology stack.
+* Project structure.
+* Installation instructions.
+* Commands to run the application.
+* How to test it.
+* How to configure optional AWS services.
+* Current limitations and future improvements.
+
+## 10. Development Instructions
+
+Work step by step:
+
+1. Inspect the current project folder.
+2. Create the project structure.
+3. Generate all required files.
+4. Install dependencies.
+5. Run the application.
+6. Fix errors that occur during execution.
+7. Test the main features.
+8. Provide clear instructions for running the app locally.
+9. Explain how to capture genuine screenshots for project documentation.
+10. Suggest the next steps for optional AWS integration.
+
+Start with a working MVP, then improve it incrementally. Do not stop after generating a design mockup. Produce runnable Python code and help verify the actual application.
+
+The final result should be a functional, beginner-friendly data analytics assistant suitable for an AWS Builder Center project article with the tag #agents.

@@ -1,0 +1,14 @@
+student_id,study_hours,attendance_pct,assignments_completed,exam_score,grade_level,study_group
+S001,2.5,82,8,68,10,Blue
+S002,5.0,95,10,91,11,Green
+S003,1.0,70,6,54,10,Blue
+S004,4.0,88,9,82,12,Red
+S005,3.5,90,10,79,11,Green
+S006,6.0,98,10,96,12,Blue
+S007,,76,7,63,10,Red
+S008,2.0,80,8,67,11,Green
+S009,4.5,92,9,86,12,Blue
+S010,3.0,85,8,73,10,Red
+S011,5.5,96,10,93,11,Green
+S012,1.5,,6,58,12,Blue
+S013,2.5,82,8,68,10,Blue
